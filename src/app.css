@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.card {
+		@apply rounded-md bg-surface border-2 border-surface-1;
+	}
+	.card-body {
+		@apply p-1;
+	}
+}
