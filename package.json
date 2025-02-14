@@ -13,7 +13,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"postinstall": "prisma generate",
-		"vercel-build": "prisma generate && prisma migrate deploy && yarn build"
+		"vercel-build": "prisma generate && prisma db push && prisma db seed && vite build"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",
