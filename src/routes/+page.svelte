@@ -1,5 +1,10 @@
 <script>
+	import { enhance } from '$app/forms';
 	import { TextInput } from 'svelte-input-components';
+
+	const { form } = $props();
+
+	$inspect(form);
 </script>
 
 <!-- Header -->
@@ -150,7 +155,7 @@
 			>
 				Want to know when we launch? Sign up for our newsletter.
 			</h2>
-			<form class="w-full max-w-md">
+			<form class="w-full max-w-md" method="post" action="?/emailSignUp" use:enhance>
 				<div class="flex gap-x-4">
 					<TextInput id="email" label="Email Address" hideLabel placeholder="Email Address" />
 					<button type="submit" class="btn btn-primary">Notify me</button>
@@ -161,6 +166,13 @@
 						class="font-semibold text-white">privacy&nbsp;policy</a
 					>.
 				</p>
+				{#if form?.message}
+					{#if form.success}
+						<p class=" text-success">{form.message}</p>
+					{:else}
+						<p class=" text-error">{form.message}</p>
+					{/if}
+				{/if}
 			</form>
 		</div>
 	</div>
