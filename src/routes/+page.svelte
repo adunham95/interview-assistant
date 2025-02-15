@@ -11,8 +11,8 @@
 <section>
 	<div class="relative">
 		<div class="mx-auto max-w-7xl">
-			<div class="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
-				<div class="relative px-6 py-32 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
+			<div class="relative z-10 md:pt-14 lg:w-full lg:max-w-2xl">
+				<div class="relative px-6 py-12 sm:py-40 lg:px-8 lg:py-56 lg:pr-0">
 					<div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
 						<h1 class="text-pretty text-5xl font-semibold tracking-tight text-content sm:text-7xl">
 							Ace Your Next Interview with Confidence
@@ -59,13 +59,18 @@
 		</div>
 		<div class="relative overflow-hidden pt-16">
 			<div class="mx-auto max-w-7xl px-6 lg:px-8">
-				<img
-					src="https://tailwindui.com/plus-assets/img/component-images/project-app-screenshot.png"
-					alt="App screenshot"
-					class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
-					width="2432"
-					height="1442"
-				/>
+				<div class="relative">
+					<img
+						src="/images/screenshot-interview.png"
+						alt="App screenshot"
+						class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+						width="2432"
+						height="1442"
+					/>
+					<span class="absolute z-10 -top-6 right-2 inline opacity-25 text-sm"
+						>Work in progress. Final app may look different</span
+					>
+				</div>
 				<div class="relative" aria-hidden="true">
 					<div class="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-surface pt-[7%]"></div>
 				</div>
@@ -156,7 +161,7 @@
 				Want to know when we launch? Sign up for our newsletter.
 			</h2>
 			<form class="w-full max-w-md" method="post" action="?/emailSignUp" use:enhance>
-				<div class="flex gap-x-4">
+				<div class="flex flex-col md:flex-row gap-y-1 gap-x-4">
 					<TextInput id="email" label="Email Address" hideLabel placeholder="Email Address" />
 					<button type="submit" class="btn btn-primary">Notify me</button>
 				</div>
