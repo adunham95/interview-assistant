@@ -1,46 +1,54 @@
 <script>
+	import { enhance } from '$app/forms';
 	import Container from '$lib/components/Container.svelte';
 	import NoteForm from '$lib/components/NoteForm.svelte';
+	import SvelteMarkdown from 'svelte-markdown';
+
+	const { data } = $props();
+	$inspect(data);
 </script>
 
 <Container>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		<!-- New Note -->
 		<section>
-			<NoteForm
-				titlePlaceholder="Round Number/Interview Type"
-				notePlaceholder="Type your notes here..."
-				ctaText="Save notes"
-			/>
+			<form method="post" action={`/jobs/${data.job?.id}?/newNote`} use:enhance>
+				<NoteForm
+					jobID={data.job?.id}
+					titlePlaceholder="Round Number/Interview Type"
+					notePlaceholder="Type your notes here..."
+					ctaText="Save notes"
+				/>
+			</form>
 		</section>
+		<!-- Job Description -->
 		<section class="card">
 			<div class="p-4">
 				<h2 class=" font-semibold text-content-1 text-lg">Job Description</h2>
-				<p>
-					We are seeking an experienced Senior Software Engineer to join our dynamic team. The ideal
-					candidate will have strong expertise in full-stack development, with particular emphasis
-					on: 5+ years of experience with modern JavaScript frameworks Strong background in system
-					design and architecture Experience with cloud services (AWS/Azure/GCP) Track record of
-					leading technical initiatives
-				</p>
+				{#if data?.job.url}
+					<a class="text-info underline cursor-pointer" target="_blank" href={data.job?.url}
+						>Job Link</a
+					>
+				{/if}
+				<div class="max-h-[250px] overflow-y-scroll">
+					<SvelteMarkdown source={data.job?.jobDescription} />
+				</div>
 			</div>
 		</section>
+
+		<!-- Previous Notes -->
 		<section class=" space-y-2">
 			<h2 class="font-semibold text-content-1 text-lg mb-2">Previous Notes</h2>
-			<div class="card">
-				<div class="p-4">
-					<h2 class=" font-semibold text-content-1 text-lg">Round 1</h2>
-					<p>Team Size 25</p>
-					<p>Company size 44</p>
-					<p>Responsibilities include writing high quality code mentoring junior devs</p>
+			{#each data.job?.notes as note}
+				<div class="card">
+					<div class="p-4">
+						<h2 class=" font-semibold text-content-1 text-lg">{note.title}</h2>
+						<p>{note.message}</p>
+					</div>
 				</div>
-			</div>
-			<div class="card">
-				<div class="p-4">
-					<h2 class=" font-semibold text-content-1 text-lg">Round 2</h2>
-					<p>Meet with engineering manager. Did tech design for a blog. Thought it went well</p>
-				</div>
-			</div>
+			{/each}
 		</section>
+		<!-- Projects -->
 		<section class=" space-y-2">
 			<h2 class="font-semibold text-content-1 text-lg mb-2">Projects</h2>
 			<details class="card p-4 [&_svg]:open:-rotate-180">

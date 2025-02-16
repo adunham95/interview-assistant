@@ -1,13 +1,13 @@
 <script>
 	import { enhance } from '$app/forms';
 	import Container from '$lib/components/Container.svelte';
+	import SvelteMarkdown from 'svelte-markdown';
 	const { data } = $props();
 
 	$inspect(data);
 </script>
 
 <Container>
-	<!-- <div class="lg:flex lg:items-center lg:justify-between"> -->
 	<div class="flex lg:items-center justify-between">
 		<div class="min-w-0 flex-1">
 			<h2 class="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
@@ -84,36 +84,67 @@
 		</div>
 	</div>
 
-	<form method="post" action="?/newNote" use:enhance class="relative pt-4">
-		<div class="rounded-md bg-white border-2 border-surface-1">
-			<div class="p-1">
-				<input hidden name="jobID" class="hidden" id="jobID" value={data.job?.id} />
-				<label for="title" class="sr-only">Title</label>
-				<input
-					type="text"
-					name="title"
-					id="title"
-					class="block w-full px-3 pt-2.5 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 border-none outline-none"
-					placeholder="Title"
-				/>
-				<label for="note" class="sr-only">Note</label>
-				<textarea
-					rows="3"
-					name="note"
-					id="note"
-					class="block w-full resize-none px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6 border-none outline-none"
-					placeholder="Take a note..."
-				></textarea>
+	<details class="p-4 [&_svg]:open:-rotate-180">
+		<summary class="flex cursor-pointer list-none items-center gap-4">
+			<div>
+				<!-- notice here, we added our own triangle/arrow svg -->
+				<svg
+					class="rotate-0 transform text-blue-700 transition-all duration-300"
+					fill="none"
+					height="20"
+					width="20"
+					stroke="currentColor"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					viewBox="0 0 24 24"
+				>
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
 			</div>
-			<div
-				class="flex items-center justify-end space-x-3 border-t border-gray-200 px-2 py-2 sm:px-3"
-			>
-				<div class="shrink-0">
-					<button type="submit" class="btn btn-primary">New Note</button>
+			<div>Job Description</div>
+		</summary>
+		<div class="pt-2">
+			{#if data?.job?.jobDescription}
+				<SvelteMarkdown source={data.job?.jobDescription} />
+			{:else}
+				<p>No Job Description</p>
+			{/if}
+		</div>
+	</details>
+
+	<div class="pt-4">
+		<form method="post" action="?/newNote" use:enhance class="relative">
+			<div class="rounded-md bg-white border-2 border-surface-1">
+				<div class="p-1">
+					<input hidden name="jobID" class="hidden" id="jobID" value={data.job?.id} />
+					<label for="title" class="sr-only">Title</label>
+					<input
+						type="text"
+						name="title"
+						id="title"
+						class="block w-full px-3 pt-2.5 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 border-none outline-none"
+						placeholder="Title"
+					/>
+					<label for="note" class="sr-only">Note</label>
+					<textarea
+						rows="3"
+						name="note"
+						id="note"
+						class="block w-full resize-none px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6 border-none outline-none"
+						placeholder="Take a note..."
+					></textarea>
+				</div>
+				<div
+					class="flex items-center justify-end space-x-3 border-t border-gray-200 px-2 py-2 sm:px-3"
+				>
+					<div class="shrink-0">
+						<button type="submit" class="btn btn-primary">New Note</button>
+					</div>
 				</div>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 
 	<div class="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 		{#each data.job?.notes || [] as note}
