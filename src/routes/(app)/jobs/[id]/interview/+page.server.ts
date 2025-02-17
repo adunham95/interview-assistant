@@ -14,11 +14,12 @@ export const load: PageServerLoad = async (event) => {
 
 	if (!job) {
 		error(404);
-		return '';
+		return { job: {} };
 	}
 
 	if (job.userId !== event.locals.user.id) {
-		return;
+		error(404);
+		return { job: {} };
 	}
 
 	return { job };

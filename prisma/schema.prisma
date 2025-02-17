@@ -31,6 +31,7 @@ model User{
   sessions Session[]
   jobs Job[]
   notes Note[]
+  projects Project[]
 }
 
 model Session{
@@ -63,6 +64,18 @@ model Note{
   user User @relation(fields: [userId], references:[id])
 }
 
+
+model Project{
+  id Int @id @default(autoincrement())
+  title String
+  url String?
+  company String?
+  date String?
+  description String?
+  contribution String?
+  userId String
+  user User @relation(fields: [userId], references:[id])
+}
 
 model NewsletterContacts{
   id Int @id @default(autoincrement())

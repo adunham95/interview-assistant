@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import Container from '$lib/components/Container.svelte';
 	import NoteForm from '$lib/components/NoteForm.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
+	import type { PageProps } from './$types';
 
-	const { data } = $props();
+	const { data }: PageProps = $props();
 	$inspect(data);
 </script>
 
@@ -54,7 +55,6 @@
 			<details class="card p-4 [&_svg]:open:-rotate-180">
 				<summary class="flex cursor-pointer list-none items-center gap-4">
 					<div>
-						<!-- notice here, we added our own triangle/arrow svg -->
 						<svg
 							class="rotate-0 transform text-blue-700 transition-all duration-300"
 							fill="none"
@@ -81,7 +81,6 @@
 			<details class="card p-4 [&_svg]:open:-rotate-180">
 				<summary class="flex cursor-pointer list-none items-center gap-4">
 					<div>
-						<!-- notice here, we added our own triangle/arrow svg -->
 						<svg
 							class="rotate-0 transform text-blue-700 transition-all duration-300"
 							fill="none"
@@ -108,7 +107,6 @@
 			<details class="card p-4 [&_svg]:open:-rotate-180">
 				<summary class="flex cursor-pointer list-none items-center gap-4">
 					<div>
-						<!-- notice here, we added our own triangle/arrow svg -->
 						<svg
 							class="rotate-0 transform text-blue-700 transition-all duration-300"
 							fill="none"
