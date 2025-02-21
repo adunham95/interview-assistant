@@ -4,12 +4,20 @@
 	import NoteForm from '$lib/components/NoteForm.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	import type { PageProps } from './$types';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 
 	const { data }: PageProps = $props();
 	$inspect(data);
 </script>
 
 <Container>
+	<Breadcrumbs
+		links={[
+			{ title: 'My Jobs', path: '/my-jobs' },
+			{ title: data.job?.title || '', path: `/jobs/${data.job?.id}` },
+			{ title: 'Interview' }
+		]}
+	/>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		<!-- New Note -->
 		<section>

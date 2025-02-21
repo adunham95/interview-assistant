@@ -1,5 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import Container from '$lib/components/Container.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	const { data } = $props();
@@ -8,6 +9,7 @@
 </script>
 
 <Container>
+	<Breadcrumbs links={[{ title: 'My Jobs', path: '/my-jobs' }, { title: data.job?.title || '' }]} />
 	<div class="flex lg:items-center justify-between">
 		<div class="min-w-0 flex-1">
 			<h2 class="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
