@@ -32,6 +32,7 @@
 					hideLabel
 					class="w-full h-full mt-0"
 					placeholder="New Note"
+					value=""
 				/>
 				<div class="flex justify-end">
 					<button class="btn btn-accent my-1 w-full btn-text">Create</button>
