@@ -52,6 +52,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@prisma/client": "^6.3.1",
+		"dayjs": "^1.11.13",
 		"postgres": "^3.4.5",
 		"svelte-input-components": "^1.0.0",
 		"svelte-markdown": "^0.4.1"

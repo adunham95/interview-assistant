@@ -1,22 +1,33 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import Container from '$lib/components/Container.svelte';
+	import StatusBadge from '$lib/components/StatusBadge.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	const { data } = $props();
 
 	$inspect(data);
+
+	async function deleteNote(id: string) {
+		await fetch(`/note/${id}`, {
+			method: 'DELETE'
+		});
+	}
 </script>
 
 <Container>
-	<Breadcrumbs links={[{ title: 'My Jobs', path: '/my-jobs' }, { title: data.job?.title || '' }]} />
+	<div class="py-3">
+		<Breadcrumbs
+			links={[{ title: 'My Jobs', path: '/my-jobs' }, { title: data.job?.title || '' }]}
+		/>
+	</div>
 	<div class="flex lg:items-center justify-between">
 		<div class="min-w-0 flex-1">
 			<h2 class="text-2xl/7 font-bold text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
 				{data.job?.title}
 			</h2>
 
-			<div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+			<div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:space-x-6">
 				{#if data.job?.company}
 					<div class="mt-2 flex items-center text-sm text-gray-500">
 						<svg
@@ -60,29 +71,13 @@
 					</div>
 				{/if}
 				{#if data.job?.status}
-					<div class="mt-2 flex items-center text-sm text-gray-500">
-						<svg
-							class="mr-1.5 size-5 shrink-0 text-gray-400"
-							viewBox="0 0 20 20"
-							fill="currentColor"
-							aria-hidden="true"
-							data-slot="icon"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2Zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75Z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-						{data.job.status}
-					</div>
+					<StatusBadge status={data.job.status} />
 				{/if}
 			</div>
 		</div>
-		<div class="flex lg:ml-4">
-			<span class="">
-				<a href={`/jobs/${data.job?.id}/interview`} class="btn btn-primary"> Start Interview </a>
-			</span>
+		<div class="flex gap-1 lg:ml-4">
+			<button class="btn btn-error">Delete Job</button>
+			<a href={`/jobs/${data.job?.id}/interview`} class="btn btn-primary"> Start Interview </a>
 		</div>
 	</div>
 
@@ -150,7 +145,13 @@
 
 	<div class="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
 		{#each data.job?.notes || [] as note}
-			<div class="col-span-1 rounded-lg bg-white shadow items-center">
+			<div class="col-span-1 rounded-lg bg-surface shadow items-center relative">
+				<button
+					onclick={() => deleteNote(note.id.toString())}
+					class="btn btn-text btn-error absolute top-0 right-0"
+				>
+					Delete
+				</button>
 				<div class="flex w-full items-center justify-between space-x-6 p-6">
 					<div class="flex-1 truncate">
 						<h2 class="text-2xl font-bold tracking-tight text-gray-900">{note.title}</h2>

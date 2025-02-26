@@ -11,6 +11,7 @@ export const load: PageServerLoad = async (event) => {
 	const jobID = parseInt(event.params.id);
 
 	const job = await prisma.job.findFirst({ where: { id: jobID }, include: { notes: true } });
+	const projects = await prisma.project.findMany({ where: { userId: event.locals.user.id } });
 
 	if (!job) {
 		error(404);
@@ -22,5 +23,5 @@ export const load: PageServerLoad = async (event) => {
 		return { job: {} };
 	}
 
-	return { job };
+	return { job, projects };
 };

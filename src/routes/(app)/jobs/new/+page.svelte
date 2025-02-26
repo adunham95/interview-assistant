@@ -1,10 +1,14 @@
 <script>
 	import { enhance } from '$app/forms';
+	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import Container from '$lib/components/Container.svelte';
 	import { Select, TextArea, TextInput } from 'svelte-input-components';
 </script>
 
 <Container>
+	<div class="py-3">
+		<Breadcrumbs links={[{ title: 'My Jobs', path: '/my-jobs' }, { title: 'New Job' }]} />
+	</div>
 	<h1>New Job</h1>
 	<form
 		method="post"
