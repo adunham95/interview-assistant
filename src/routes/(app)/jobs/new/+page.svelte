@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import Container from '$lib/components/Container.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { Select, TextArea, TextInput } from 'svelte-input-components';
 </script>
 
@@ -9,7 +10,7 @@
 	<div class="py-3">
 		<Breadcrumbs links={[{ title: 'My Jobs', path: '/my-jobs' }, { title: 'New Job' }]} />
 	</div>
-	<h1>New Job</h1>
+	<PageHeader title="New Job" />
 	<form
 		method="post"
 		action="?/create"

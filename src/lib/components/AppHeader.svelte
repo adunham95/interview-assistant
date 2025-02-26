@@ -2,7 +2,7 @@
 	const routes = [
 		{ title: 'My Jobs', path: '/my-jobs' },
 		{ title: 'New Job', path: '/jobs/new' },
-		{ title: 'Accomplishments', path: '/accomplishments' }
+		{ title: 'Accomplishments & Projects', path: '/accomplishments' }
 	];
 	const profileRoutes = [{ title: 'My Profile', path: '/profile/me' }];
 

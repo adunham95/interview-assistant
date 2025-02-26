@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	import Container from '$lib/components/Container.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
 	import { TextArea } from 'svelte-input-components';
 
@@ -10,6 +11,7 @@
 </script>
 
 <Container>
+	<PageHeader title="My Jobs" />
 	<ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 		<li
 			class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow flex justify-center items-center"

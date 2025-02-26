@@ -2457,7 +2457,6 @@ __metadata:
     "@types/node": "npm:^22.13.4"
     autoprefixer: "npm:^10.4.20"
     cornbread-ui: "npm:^1.0.0-alpha.5.0"
-    dayjs: "npm:^1.11.13"
     eslint: "npm:^9.18.0"
     eslint-config-prettier: "npm:^10.0.1"
     eslint-plugin-svelte: "npm:^2.46.1"
@@ -2471,6 +2470,7 @@ __metadata:
     svelte-check: "npm:^4.0.0"
     svelte-input-components: "npm:^1.0.0"
     svelte-markdown: "npm:^0.4.1"
+    svelte-time: "npm:^2.0.1"
     tailwindcss: "npm:3"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.0.0"
@@ -3830,6 +3830,15 @@ __metadata:
   peerDependencies:
     svelte: ^4.0.0
   checksum: 10c0/d13259e258c552f6a58c9498d74efef6cfc21ed06abecaf4e1a6cc53a52c9c2b145fc14ffc0c2b15ced2a817e8f63f2eb56a85db0e197f4b61a2c9af3bf3ba54
+  languageName: node
+  linkType: hard
+
+"svelte-time@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "svelte-time@npm:2.0.1"
+  dependencies:
+    dayjs: "npm:^1.11.13"
+  checksum: 10c0/cf89e1328ee28391b9e2ad5f7d257f8991c3d5258f1fc9b17501e3c3ab698d5a95e62c0dd3703c5318a37861973be00fc9c26bdfc6f58cada7fd128e7313e149
   languageName: node
   linkType: hard
 
