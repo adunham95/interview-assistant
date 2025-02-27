@@ -22,7 +22,7 @@
 		<div class="relative flex h-16 justify-between">
 			<div class="relative z-10 flex px-2 lg:px-0">
 				<div class="flex shrink-0 items-center">
-					<h2>IntervuKit</h2>
+					<h2>Career Fingerprint</h2>
 				</div>
 			</div>
 			<div class="relative z-10 flex items-center lg:hidden">
@@ -200,7 +200,7 @@
 				<div class="pb-2 pt-3">
 					<div class="flex items-center justify-between px-4">
 						<div>
-							<h2>IntervuKit</h2>
+							<h2>Career Fingerprint</h2>
 						</div>
 						<div class="-mr-2">
 							<button
