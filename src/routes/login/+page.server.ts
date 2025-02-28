@@ -4,10 +4,11 @@ import { fail, redirect } from '@sveltejs/kit';
 import * as auth from '$lib/server/auth';
 import type { Actions, PageServerLoad } from './$types';
 import { prisma } from '$lib/server/db/prisma';
+import { Globals } from '$lib/globals';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.user) {
-		return redirect(302, '/my-jobs');
+		return redirect(302, Globals.loginInUrl);
 	}
 	return {};
 };
@@ -50,7 +51,7 @@ export const actions: Actions = {
 		const session = await auth.createSession(sessionToken, existingUser.id);
 		auth.setSessionTokenCookie(event, sessionToken, session.expiresAt);
 
-		return redirect(302, '/my-jobs');
+		return redirect(302, Globals.loginInUrl);
 	},
 	register: async (event) => {
 		const formData = await event.request.formData();
@@ -93,7 +94,7 @@ export const actions: Actions = {
 			console.log(e);
 			return fail(500, { message: 'An error has occurred' });
 		}
-		return redirect(302, '/my-jobs');
+		return redirect(302, Globals.loginInUrl);
 	}
 };
 

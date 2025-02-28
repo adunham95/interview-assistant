@@ -22,7 +22,7 @@
 				</div>
 			</a>
 		</li>
-		<li
+		<!-- <li
 			class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow flex justify-center items-center"
 		>
 			<form class="p-1 w-full" method="post" action="?/newNote" use:enhance>
@@ -38,7 +38,7 @@
 					<button class="btn btn-accent my-1 w-full btn-text">Create</button>
 				</div>
 			</form>
-		</li>
+		</li> -->
 		{#each data.jobs || [] as job}
 			<li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
 				<a href={`/jobs/${job.id}`}>

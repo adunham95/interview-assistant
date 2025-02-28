@@ -8,6 +8,10 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			gridTemplateColumns: {
+				// Simple 16 column grid
+				'52': 'repeat(52, minmax(0, 1fr))'
+			},
 			colors: {
 				brand: {
 					DEFAULT: '#3f72af',

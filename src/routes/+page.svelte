@@ -1,5 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { Globals } from '$lib/globals';
 	import { TextInput } from 'svelte-input-components';
 
 	const { form } = $props();
@@ -239,7 +240,8 @@
 			</a>
 		</div> -->
 		<p class="mt-8 text-center text-sm/6 text-grayYour Company, Inc-600 md:order-1 md:mt-0">
-			&copy; {new Date().getFullYear()} IntervuKit LLC. All rights reserved.
+			&copy; {new Date().getFullYear()}
+			{Globals.companyName}. All rights reserved.
 		</p>
 	</div>
 </footer>

@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { Globals } from '$lib/globals';
+
 	const routes = [
+		{ title: 'Hub', path: '/hub' },
 		{ title: 'My Jobs', path: '/my-jobs' },
 		{ title: 'New Job', path: '/jobs/new' },
 		{ title: 'Accomplishments & Projects', path: '/accomplishments' }
@@ -22,7 +25,7 @@
 		<div class="relative flex h-16 justify-between">
 			<div class="relative z-10 flex px-2 lg:px-0">
 				<div class="flex shrink-0 items-center">
-					<h2>Career Fingerprint</h2>
+					<h2>{Globals.appName}</h2>
 				</div>
 			</div>
 			<div class="relative z-10 flex items-center lg:hidden">
@@ -200,7 +203,7 @@
 				<div class="pb-2 pt-3">
 					<div class="flex items-center justify-between px-4">
 						<div>
-							<h2>Career Fingerprint</h2>
+							<h2>{Globals.appName}</h2>
 						</div>
 						<div class="-mr-2">
 							<button

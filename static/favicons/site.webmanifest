@@ -1,7 +1,7 @@
 {
 	"name": "Career Fingerprint",
 	"short_name": "CareerPrint",
-	"start_url": "/my-jobs",
+	"start_url": "/hub",
 	"icons": [
 		{
 			"purpose": "any",
