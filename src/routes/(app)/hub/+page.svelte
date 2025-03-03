@@ -1,6 +1,6 @@
 <script>
 	import Container from '$lib/components/Container.svelte';
-	import ContriubutionChart from '$lib/components/ContriubutionChart.svelte';
+	import Note from '$lib/components/Forms/Note.svelte';
 </script>
 
 <div class="fixed bottom-0 right-0">
@@ -11,7 +11,7 @@
 	<div class="flex justify-center">
 		<div class=" w-full max-w-[500px] card">
 			<div class="card-body">
-				<input class="w-full border-0" />
+				<Note />
 			</div>
 		</div>
 	</div>

@@ -1,23 +1,39 @@
 import { prisma } from '$lib/server/db/prisma.js';
+import { logAllFormData } from '$lib/utils/logAllFormData';
+import { json } from '@sveltejs/kit';
 
 export async function DELETE({ params, locals }) {
 	if (!locals.user) {
 		return new Response(null, { status: 204 });
 	}
 	const userId = locals.user.id;
-	const note = await prisma.note.findFirst({ where: { id: parseInt(params.id) } });
+	// const note = await prisma.note.findFirst({ where: { id: parseInt(params.id) } });
+	const deleteNote = await prisma.note.delete({ where: { id: parseInt(params.id) } });
 
-	console.log({ userId, note });
+	console.log({ userId, deleteNote });
 
 	return new Response(null, { status: 204 });
 }
 
-export async function PATCH({ params, locals, request }) {
+export async function POST({ params, locals, request }) {
 	if (!locals.user) {
 		return new Response(null, { status: 204 });
 	}
 
-	const { title, message } = await request.json();
+	console.log('update note');
+
+	const formData = await request.formData();
+	logAllFormData(formData);
+
+	const message = formData.get('note');
+	const title = formData.get('title');
+
+	if (!message || typeof message !== 'string') {
+		return new Response(null, { status: 204 });
+	}
+	if (typeof title !== 'string') {
+		return new Response(null, { status: 204 });
+	}
 
 	const userId = locals.user.id;
 	const note = await prisma.note.update({
@@ -27,5 +43,5 @@ export async function PATCH({ params, locals, request }) {
 
 	console.log({ userId, note });
 
-	return new Response(null, { status: 204 });
+	return json({ updatedNote: note, type: 'success' }, { status: 201 });
 }

@@ -1,11 +1,13 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
 	import Container from '$lib/components/Container.svelte';
+	import Note from '$lib/components/Forms/Note.svelte';
+	import Modal from '$lib/components/Modal.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
 	const { data } = $props();
+	import type { Note as NoteType } from '@prisma/client';
 
 	$inspect(data);
 
@@ -14,6 +16,11 @@
 			method: 'DELETE'
 		});
 	}
+
+	let editNote: null | NoteType = $state(null);
+	let isEditNoteFormOpen = $derived.by(() => {
+		return editNote !== null;
+	});
 </script>
 
 <Container>
@@ -106,39 +113,14 @@
 	</details>
 
 	<div class="pt-4">
-		<form method="post" action="?/newNote" use:enhance class="relative">
-			<div class="rounded-md bg-white border-2 border-surface-1">
-				<div class="p-1">
-					<input hidden name="jobID" class="hidden" id="jobID" value={data.job?.id} />
-					<label for="title" class="sr-only">Title</label>
-					<input
-						type="text"
-						name="title"
-						id="title"
-						class="block w-full px-3 pt-2.5 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 border-none outline-none"
-						placeholder="Title"
-					/>
-					<label for="note" class="sr-only">Note</label>
-					<textarea
-						rows="3"
-						name="note"
-						id="note"
-						class="block w-full resize-none px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6 border-none outline-none"
-						placeholder="Take a note..."
-					></textarea>
-				</div>
-				<div
-					class="flex items-center justify-end space-x-3 border-t border-gray-200 px-2 py-2 sm:px-3"
-				>
-					<div class="shrink-0">
-						<button type="submit" class="btn btn-primary">New Note</button>
-					</div>
-				</div>
+		<div class="card">
+			<div class="card-body">
+				<Note jobID={data.job?.id} />
 			</div>
-		</form>
+		</div>
 	</div>
 
-	<div class="mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+	<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
 		{#each data.job?.notes || [] as note}
 			<div class="col-span-1 rounded-lg bg-surface shadow items-center relative">
 				<button
@@ -147,15 +129,28 @@
 				>
 					Delete
 				</button>
-				<div class="flex w-full items-center justify-between space-x-6 p-6">
+				<button
+					onclick={() => (editNote = note)}
+					class="flex w-full items-center justify-between space-x-6 p-6"
+				>
 					<div class="flex-1 truncate">
 						<h2 class="text-2xl font-bold tracking-tight text-gray-900">{note.title}</h2>
 						<p class="mt-1">
 							{note.message}
 						</p>
 					</div>
-				</div>
+				</button>
 			</div>
 		{/each}
 	</div>
+	<Modal showModal={isEditNoteFormOpen} onClose={() => (editNote = null)}>
+		<div class="card">
+			<div class="card-body">
+				<div class="flex justify-end">
+					<button class="btn btn-error btn-text" onclick={() => (editNote = null)}> Close </button>
+				</div>
+				<Note noteID={editNote?.id} {...editNote} />
+			</div>
+		</div>
+	</Modal>
 </Container>
