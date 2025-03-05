@@ -1,10 +1,10 @@
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
 import { logAllFormData } from '$lib/utils/logAllFormData';
 import { prisma } from '$lib/server/db/prisma';
 
 export const actions: Actions = {
-	create: async (event) => {
+	default: async (event) => {
 		if (!event.locals.user) {
 			return fail(401);
 		}
@@ -52,6 +52,8 @@ export const actions: Actions = {
 		});
 
 		console.log({ newJob });
+
+		redirect(302, `/jobs/${newJob.id}`);
 
 		return true;
 	}

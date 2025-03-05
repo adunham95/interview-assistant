@@ -80,7 +80,8 @@
 			{/if}
 		{/snippet}
 		{#snippet actions()}
-			<button class="btn btn-error">Delete Job</button>
+			<a href={`/jobs/${data.job?.id}/edit`} class="btn btn-warning text-white">Edit</a>
+			<button class="btn btn-error text-white">Delete</button>
 			<a href={`/jobs/${data.job?.id}/interview`} class="btn btn-primary"> Start Interview </a>
 		{/snippet}
 	</PageHeader>
