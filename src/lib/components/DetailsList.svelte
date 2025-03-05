@@ -11,7 +11,7 @@
 	<div class="px-4 sm:px-0">
 		<h3 class="text-lg font-semibold text-gray-900">{title}</h3>
 	</div>
-	<div class="mt-6 border-t border-gray-100">
+	<div class="mt-3 border-t border-gray-100">
 		<dl class="divide-y divide-gray-100">
 			{#each data as item}
 				<div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
