@@ -1,11 +1,12 @@
 <script>
 	import { enhance } from '$app/forms';
 	import Container from '$lib/components/Container.svelte';
+	import Project from '$lib/components/Forms/Project.svelte';
 	import { TextArea, TextInput } from 'svelte-input-components';
 </script>
 
 <Container>
-	<form
+	<!-- <form
 		class="grid grid-cols-1 md:grid-cols-2 gap-4"
 		method="post"
 		action="?/newProject"
@@ -20,5 +21,6 @@
 		<div class="md:col-span-2 flex justify-end">
 			<button class="btn btn-primary">Save</button>
 		</div>
-	</form>
+	</form> -->
+	<Project />
 </Container>

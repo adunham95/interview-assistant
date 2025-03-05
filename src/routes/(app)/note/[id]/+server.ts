@@ -2,6 +2,8 @@ import { prisma } from '$lib/server/db/prisma.js';
 import { logAllFormData } from '$lib/utils/logAllFormData';
 import { json } from '@sveltejs/kit';
 
+// TODO convert to form action
+
 export async function DELETE({ params, locals }) {
 	if (!locals.user) {
 		return new Response(null, { status: 204 });

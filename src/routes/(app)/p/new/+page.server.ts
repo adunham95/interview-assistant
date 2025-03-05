@@ -4,7 +4,7 @@ import type { Actions } from '@sveltejs/kit';
 import { fail, redirect } from '@sveltejs/kit';
 
 export const actions: Actions = {
-	newProject: async (event) => {
+	default: async (event) => {
 		if (!event.locals.user) {
 			return fail(401);
 		}
@@ -36,6 +36,6 @@ export const actions: Actions = {
 			redirect(302, `/p/${newProject.id}`);
 		}
 
-		return true;
+		return { newProject };
 	}
 };

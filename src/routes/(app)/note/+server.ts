@@ -2,6 +2,8 @@ import { prisma } from '$lib/server/db/prisma.js';
 import { logAllFormData } from '$lib/utils/logAllFormData';
 import { json } from '@sveltejs/kit';
 
+// TODO convert to form action
+
 export async function POST({ locals, request }) {
 	console.log('Post Message New Note');
 	if (!locals.user) {

@@ -74,7 +74,9 @@
 				</div>
 			{/if}
 			{#if data.job?.status}
-				<StatusBadge status={data.job.status} />
+				<div>
+					<StatusBadge status={data.job.status} />
+				</div>
 			{/if}
 		{/snippet}
 		{#snippet actions()}
@@ -120,7 +122,7 @@
 		</div>
 	</div>
 
-	<div class="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
+	<div class="mt-2 grid gap-2 grid-cols-2 lg:grid-cols-4">
 		{#each data.job?.notes || [] as note}
 			<div class="col-span-1 rounded-lg bg-surface shadow items-center relative">
 				<button
@@ -143,10 +145,11 @@
 			</div>
 		{/each}
 	</div>
-	<Modal showModal={isEditNoteFormOpen} onClose={() => (editNote = null)}>
-		<div class="card">
+	<Modal showModal={isEditNoteFormOpen} onClose={() => (editNote = null)} className="w-[500px]">
+		<div class="card w-full">
 			<div class="card-body">
-				<div class="flex justify-end">
+				<div class="flex justify-between px-1">
+					<h2 class="">Edit Note</h2>
 					<button class="btn btn-error btn-text" onclick={() => (editNote = null)}> Close </button>
 				</div>
 				<Note noteID={editNote?.id} {...editNote} />

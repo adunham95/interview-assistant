@@ -14,13 +14,11 @@ export const load: PageServerLoad = async (event) => {
 	const projects = await prisma.project.findMany({ where: { userId: event.locals.user.id } });
 
 	if (!job) {
-		error(404);
-		return { job: {} };
+		return error(404);
 	}
 
 	if (job.userId !== event.locals.user.id) {
-		error(404);
-		return { job: {} };
+		return error(404);
 	}
 
 	return { job, projects };

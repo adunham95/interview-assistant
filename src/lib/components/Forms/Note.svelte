@@ -1,29 +1,43 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import type { Note } from '@prisma/client';
+	import { Result } from 'postcss';
 
 	const {
 		jobID,
 		noteID,
 		title,
-		message
+		message,
+		titlePlaceholder = 'Title',
+		notePlaceholder = 'Type your notes here...',
+		onSuccess
 	}: {
 		jobID?: number | null;
 		noteID?: number | null;
 		message?: string | null;
 		title?: string | null;
+		titlePlaceholder?: string | null;
+		notePlaceholder?: string | null;
+		onSuccess?: (newNote: Note) => void;
 	} = $props();
 
 	let error: null | string = $state(null);
 </script>
+
+<!-- TODO convert for form action -->
 
 <form
 	method="post"
 	action="/note"
 	use:enhance={({ formElement }) => {
 		return async ({ result }) => {
+			const resultData = result;
 			console.log({ type: result.type });
 			if (result.type === 'success') {
 				formElement.reset();
+				if (onSuccess) {
+					onSuccess(result.newNote);
+				}
 			}
 			if (result.type === 'error') {
 				error = 'There was an error saving the note';
@@ -40,7 +54,7 @@
 			name="title"
 			id="title"
 			class="block w-full px-3 pt-2.5 text-lg font-medium text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 border-none outline-none bg-transparent rounded-sm"
-			placeholder="Title"
+			placeholder={titlePlaceholder}
 			value={title}
 		/>
 		<label for="note" class="sr-only">Note</label>
@@ -49,7 +63,7 @@
 			name="note"
 			id="note"
 			class="block w-full resize-none px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:outline focus:outline-0 sm:text-sm/6 border-none outline-none bg-transparent rounded-sm"
-			placeholder="Take a note..."
+			placeholder={notePlaceholder}
 			value={message}
 		></textarea>
 	</div>
@@ -65,7 +79,7 @@
 					Update Note
 				</button>
 			{:else}
-				<button type="submit" class="btn btn-primary">New Note</button>
+				<button type="submit" class="btn btn-primary">Save Note</button>
 			{/if}
 		</div>
 	</div>

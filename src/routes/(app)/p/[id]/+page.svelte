@@ -81,10 +81,14 @@
 			{/if}
 		{/snippet}
 		{#snippet actions()}
-			<button class="btn btn-error">Delete</button>
+			<a href={`/p/${data.project?.id}/edit`} class="btn btn-warning">Edit</a>
+
+			<form method="post">
+				<button formaction={`/p/${data.project?.id}?/delete`} class="btn btn-error">Delete</button>
+			</form>
 		{/snippet}
 	</PageHeader>
 	<div class="h-2"></div>
-	<SvelteMarkdown source={data.project?.description} />
-	<SvelteMarkdown source={data.project?.contribution} />
+	<SvelteMarkdown source={data.project?.description || ''} />
+	<SvelteMarkdown source={data.project?.contribution || ''} />
 </Container>

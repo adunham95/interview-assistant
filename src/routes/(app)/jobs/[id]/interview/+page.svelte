@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import Container from '$lib/components/Container.svelte';
-	import NoteForm from '$lib/components/NoteForm.svelte';
 	import SvelteMarkdown from 'svelte-markdown';
-	import type { PageProps } from './$types';
 	import Breadcrumbs from '$lib/components/Breadcrumbs.svelte';
+	import Note from '$lib/components/Forms/Note.svelte';
 
-	const { data }: PageProps = $props();
+	let { data } = $props();
 	$inspect(data);
 </script>
 
@@ -23,24 +21,26 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 		<!-- New Note -->
 		<section>
-			<form method="post" action={`/jobs/${data.job?.id}?/newNote`} use:enhance>
-				<NoteForm
-					jobID={data.job?.id}
-					titlePlaceholder="Round Number/Interview Type"
-					notePlaceholder="Type your notes here..."
-					ctaText="Save notes"
-				/>
-			</form>
+			<Note
+				jobID={data?.job?.id}
+				titlePlaceholder="Round Number/Interview Type"
+				notePlaceholder="Type your notes here..."
+				onSuccess={(note) => {
+					if (data.job) {
+						data = { ...data, job: { ...data?.job, notes: [...(data.job?.notes || []), note] } };
+					}
+				}}
+			/>
 		</section>
 		<!-- Job Description -->
 		<section class="card">
 			<div class="p-4">
 				<h2 class=" font-semibold text-content-1 text-lg">Job Description</h2>
-				{#if data.job.jobDescription}
+				{#if data.job?.jobDescription}
 					<div class="md:max-h-[250px] md:overflow-y-scroll">
 						<SvelteMarkdown source={data.job?.jobDescription} />
 					</div>
-				{:else if data?.job.url}
+				{:else if data.job?.url}
 					<a class="text-info underline cursor-pointer" target="_blank" href={data.job?.url}
 						>Job Link</a
 					>
@@ -53,7 +53,7 @@
 		<!-- Previous Notes -->
 		<section class=" space-y-2">
 			<h2 class="font-semibold text-content-1 text-lg mb-2">Previous Notes</h2>
-			{#each data.job?.notes as note}
+			{#each data.job?.notes || [] as note}
 				<div class="card">
 					<div class="p-4">
 						<h2 class=" font-semibold text-content-1 text-lg">{note.title}</h2>

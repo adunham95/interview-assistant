@@ -1,5 +1,11 @@
 <script>
-	let { showModal = $bindable(), header = null, children, onClose = () => null } = $props();
+	let {
+		showModal = $bindable(),
+		header = null,
+		children,
+		onClose = () => null,
+		className = ''
+	} = $props();
 
 	let dialog = $state(); // HTMLDialogElement
 
@@ -11,7 +17,7 @@
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
-	class="mt-8 rounded-xl shadow-3xl backdrop:bg-black/25"
+	class={`mt-8 rounded-xl shadow-3xl backdrop:bg-black/25 ${className}`}
 	bind:this={dialog}
 	onclose={() => {
 		showModal = false;
