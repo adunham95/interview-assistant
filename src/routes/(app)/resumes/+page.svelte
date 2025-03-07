@@ -1,4 +1,9 @@
 <script lang="ts">
+	import EditElements from './EditElements.svelte';
+	import Resume from './Resume.svelte';
+
+	let tab = $state('resume');
+
 	const previewResume = {
 		name: 'John Doe',
 		contact: {
@@ -82,28 +87,44 @@
 </script>
 
 <div class="grid grid-cols-4 px-9 py-3 gap-6">
-	<div class=" space-y-2">
-		<div class="card">
-			<div class="card-body p-3">
-				<h2 class="font-bold">Elements</h2>
-				<p class="text-sm py-2">Manage all the elements of your application</p>
-				<button class="btn btn-info btn-text w-full justify-start flex">Details</button>
-				<button class="btn btn-info btn-text w-full justify-start flex">Experience</button>
-				<button class="btn btn-info btn-text w-full justify-start flex">Education</button>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-body p-3">
-				<h2 class="font-bold">Resume Versions</h2>
-				<p class="text-sm py-2">Manage Different Versions of your resume</p>
-				<div class="space-y-2">
-					<button class="btn btn-outline btn-primary w-full">General Resume</button>
-					<button class="btn btn-text btn-primary w-full">Front End Resume</button>
-					<button class="btn btn-success btn-text w-full">New Version</button>
+	<div class="">
+		<div class="sticky top-0 space-y-2">
+			<button
+				onclick={() => (tab = 'resume')}
+				class="btn btn-primary btn-text text-lg w-full text-center sticky top-0"
+			>
+				Preview Resume
+			</button>
+			<div class="card">
+				<div class="card-body p-3">
+					<h2 class="font-bold">Elements</h2>
+					<p class="text-sm py-2">Manage all the elements of your application</p>
+					<button
+						onclick={() => (tab = 'elements')}
+						class="btn btn-info btn-text w-full justify-start flex">Details</button
+					>
+					<button
+						onclick={() => (tab = 'elements')}
+						class="btn btn-info btn-text w-full justify-start flex">Experience</button
+					>
+					<button
+						onclick={() => (tab = 'elements')}
+						class="btn btn-info btn-text w-full justify-start flex">Education</button
+					>
 				</div>
 			</div>
-		</div>
-		<div class="card">
+			<!-- <div class="card">
+				<div class="card-body p-3">
+					<h2 class="font-bold">Resume Versions</h2>
+					<p class="text-sm py-2">Manage Different Versions of your resume</p>
+					<div class="space-y-2">
+						<button class="btn btn-outline btn-primary w-full">General Resume</button>
+						<button class="btn btn-text btn-primary w-full">Front End Resume</button>
+						<button class="btn btn-success btn-text w-full">New Version</button>
+					</div>
+				</div>
+			</div> -->
+			<!-- <div class="card">
 			<div class="card-body p-3">
 				<h2 class="font-bold">Templates</h2>
 				<p class="text-sm py-2">Choose a template for your resume</p>
@@ -113,17 +134,14 @@
 					<button class="btn btn-text btn-primary w-full">Classic</button>
 				</div>
 			</div>
+		</div> -->
 		</div>
 	</div>
 	<div class=" col-span-3">
-		<div
-			class="grid grid-cols-5 h-[500px]"
-			style={`grid-template-areas: 
-		"a a a a a"
-		"b c c c c"
-		"b c c c c"`}
-		>
-			<h2>My Resume</h2>
-		</div>
+		{#if tab === 'resume'}
+			<Resume />
+		{:else if tab === 'elements'}
+			<EditElements />
+		{/if}
 	</div>
 </div>
