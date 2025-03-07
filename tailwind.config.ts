@@ -13,6 +13,9 @@ export default {
 				'52': 'repeat(52, minmax(0, 1fr))'
 			},
 			colors: {
+				surface: {
+					DEFAULT: '#fefefe'
+				},
 				brand: {
 					DEFAULT: '#3f72af',
 					light: '#a6cae0',

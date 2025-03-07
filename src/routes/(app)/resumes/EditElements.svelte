@@ -1,7 +1,5 @@
 <script lang="ts">
 	import DetailsList from '$lib/components/DetailsList.svelte';
-	import exp from 'constants';
-	import { TextArea, TextInput } from 'svelte-input-components';
 
 	let profile = $state({
 		id: 1,

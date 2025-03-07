@@ -54,9 +54,9 @@
 	];
 </script>
 
-<div class="bg-gray-50 py-10">
+<div class="pt-4 pb-10">
 	<div class="container mx-auto px-4 max-w-5xl">
-		<div class="bg-white shadow-lg rounded-lg overflow-hidden">
+		<div class="bg-surface shadow-lg rounded-lg overflow-hidden">
 			<!-- Header -->
 			<div class=" p-8">
 				<div class="flex flex-col md:flex-row justify-between">
