@@ -5,7 +5,8 @@
 		{ title: 'Hub', path: '/hub' },
 		{ title: 'My Jobs', path: '/my-jobs' },
 		{ title: 'New Job', path: '/jobs/new' },
-		{ title: 'Accomplishments & Projects', path: '/accomplishments' }
+		{ title: 'Accomplishments & Projects', path: '/accomplishments' },
+		{ title: 'My Resumes', path: '/resumes' }
 	];
 	const profileRoutes = [{ title: 'My Profile', path: '/profile/me' }];
 

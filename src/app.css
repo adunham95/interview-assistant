@@ -27,4 +27,10 @@
 	.badge-info {
 		@apply bg-info-light/20 text-info-dark ring-info-dark;
 	}
+	.btn-warning,
+	.btn-error,
+	.btn-success,
+	.btn-info {
+		@apply text-white;
+	}
 }
