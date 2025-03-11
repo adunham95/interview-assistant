@@ -5,9 +5,10 @@
 		title: string;
 		actions?: Snippet;
 		children: Snippet;
+		childrenWrapperClassName?: string;
 	}
 
-	const { children, title, actions }: Props = $props();
+	const { children, title, actions, childrenWrapperClassName = '' }: Props = $props();
 </script>
 
 <details class="[&_svg]:open:-rotate-180">
@@ -30,7 +31,7 @@
 		<div>{title}</div>
 		{@render actions?.()}
 	</summary>
-	<div class="p-2">
+	<div class={`p-2 ${childrenWrapperClassName}`}>
 		{@render children()}
 	</div>
 </details>

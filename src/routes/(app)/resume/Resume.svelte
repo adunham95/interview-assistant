@@ -233,7 +233,7 @@
 						</svg>
 					</a>
 				</div>
-				<p class="mt-4 text-gray-600">Download PDF version or print this resume</p>
+				<!-- <p class="mt-4 text-gray-600">Download PDF version or print this resume</p>
 				<button class="mt-2 btn btn-primary">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +250,7 @@
 						/>
 					</svg>
 					Download Resume
-				</button>
+				</button> -->
 			</div>
 		</div>
 	</div>
