@@ -24,7 +24,7 @@
 							and organized.
 						</p>
 						<div class="mt-10 flex items-center gap-x-6">
-							<a href="#contact" class="btn btn-primary">Get started</a>
+							<a href="/hub" class="btn btn-primary">Get started</a>
 							<a href="#about" class="btn btn-text">
 								Learn more <span aria-hidden="true">→</span>
 							</a>

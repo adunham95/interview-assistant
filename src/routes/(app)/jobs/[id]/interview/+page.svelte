@@ -34,7 +34,7 @@
 		</section>
 		<!-- Job Description -->
 		<section class="card">
-			<div class="p-4">
+			<div class="p-4 [&_code]:text-wrap">
 				<h2 class=" font-semibold text-content-1 text-lg">Job Description</h2>
 				{#if data.job?.jobDescription}
 					<div class="md:max-h-[250px] md:overflow-y-scroll">

@@ -106,7 +106,7 @@
 			</div>
 			<div>Job Description</div>
 		</summary>
-		<div class="pt-2">
+		<div class="pt-2 [&_code]:text-wrap">
 			{#if data?.job?.jobDescription}
 				<SvelteMarkdown source={data.job?.jobDescription} />
 			{:else}
