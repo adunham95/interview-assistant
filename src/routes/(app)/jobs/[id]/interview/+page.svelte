@@ -65,31 +65,48 @@
 		<!-- Projects -->
 		<section class=" space-y-2">
 			<h2 class="font-semibold text-content-1 text-lg mb-2">Projects</h2>
-			{#each data?.projects || [] as project}
-				<details class="card p-4 [&_svg]:open:-rotate-180">
-					<summary class="flex cursor-pointer list-none items-center gap-4">
-						<div>
-							<svg
-								class="rotate-0 transform text-blue-700 transition-all duration-300"
-								fill="none"
-								height="20"
-								width="20"
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								viewBox="0 0 24 24"
-							>
-								<polyline points="6 9 12 15 18 9"></polyline>
-							</svg>
+			<div class="max-h-[375px] overflow-y-auto">
+				{#each data?.projects || [] as project}
+					<details class="card p-4 [&_svg]:open:-rotate-180 mb-1">
+						<summary class="flex cursor-pointer list-none items-center gap-4">
+							<div>
+								<svg
+									class="rotate-0 transform text-blue-700 transition-all duration-300"
+									fill="none"
+									height="20"
+									width="20"
+									stroke="currentColor"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									viewBox="0 0 24 24"
+								>
+									<polyline points="6 9 12 15 18 9"></polyline>
+								</svg>
+							</div>
+							<div>{project.title}</div>
+						</summary>
+						<div class="[&_code]:text-wrap space-y-4 divide-y-2 divide-surface-4 pt-2">
+							<div>
+								<h3 class="pb-1 font-medium">Description</h3>
+								<SvelteMarkdown source={project?.description || ''} />
+							</div>
+							<div>
+								<h3 class="pt-2 pb-1 font-medium">Contribution</h3>
+								<SvelteMarkdown source={project?.contribution || ''} />
+							</div>
+							<div>
+								<h3 class="pt-2 pb-1 font-medium">Problem</h3>
+								<SvelteMarkdown source={project?.problem || ''} />
+							</div>
+							<div>
+								<h3 class="pt-2 pb-1 font-medium">Solution</h3>
+								<SvelteMarkdown source={project?.solution || ''} />
+							</div>
 						</div>
-						<div>{project.title}</div>
-					</summary>
-					<div class="pt-2">
-						<SvelteMarkdown source={project.description} />
-					</div>
-				</details>
-			{/each}
+					</details>
+				{/each}
+			</div>
 		</section>
 	</div>
 </Container>

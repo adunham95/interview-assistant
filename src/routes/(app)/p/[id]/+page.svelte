@@ -89,10 +89,22 @@
 		{/snippet}
 	</PageHeader>
 	<div class="h-2"></div>
-	<div class="[&_code]:text-wrap">
-		<SvelteMarkdown source={data.project?.description || ''} />
-		<SvelteMarkdown source={data.project?.contribution || ''} />
-		<SvelteMarkdown source={data.project?.problem || ''} />
-		<SvelteMarkdown source={data.project?.solution || ''} />
+	<div class="[&_code]:text-wrap space-y-4 divide-y-2 divide-surface-4">
+		<div>
+			<h3 class="pb-1 font-medium">Description</h3>
+			<SvelteMarkdown source={data.project?.description || ''} />
+		</div>
+		<div>
+			<h3 class="pt-2 pb-1 font-medium">Contribution</h3>
+			<SvelteMarkdown source={data.project?.contribution || ''} />
+		</div>
+		<div>
+			<h3 class="pt-2 pb-1 font-medium">Problem</h3>
+			<SvelteMarkdown source={data.project?.problem || ''} />
+		</div>
+		<div>
+			<h3 class="pt-2 pb-1 font-medium">Solution</h3>
+			<SvelteMarkdown source={data.project?.solution || ''} />
+		</div>
 	</div>
 </Container>

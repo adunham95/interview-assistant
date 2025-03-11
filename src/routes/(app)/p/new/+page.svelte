@@ -4,7 +4,7 @@
 	import Project from '$lib/components/Forms/Project.svelte';
 </script>
 
-<Container>
+<Container className="pb-2">
 	<div class="py-3">
 		<Breadcrumbs
 			links={[

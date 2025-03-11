@@ -8,7 +8,7 @@
 	$inspect(data);
 </script>
 
-<Container>
+<Container className="pb-3">
 	<div class="py-3">
 		<Breadcrumbs
 			links={[
