@@ -148,6 +148,7 @@
 						{#each profileRoutes as route}
 							<a
 								href={route.path}
+								onclick={() => (profileOpen = !profileOpen)}
 								class="block px-4 py-2 text-sm text-gray-700"
 								role="menuitem"
 								tabindex="-1"
@@ -232,6 +233,7 @@
 						{#each routes as route}
 							<a
 								href={route.path}
+								onclick={() => (mobileNabOpen = !mobileNabOpen)}
 								class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-800"
 							>
 								{route.title}
