@@ -17,6 +17,8 @@ export const actions: Actions = {
 		const date = formData.get('date');
 		const description = formData.get('description');
 		const contribution = formData.get('contribution');
+		const problem = formData.get('problem');
+		const solution = formData.get('solution');
 
 		const newProject = await prisma.project.create({
 			data: {
@@ -26,7 +28,9 @@ export const actions: Actions = {
 				url: String(url) || null,
 				company: String(company) || null,
 				description: String(description) || null,
-				contribution: String(contribution) || null
+				contribution: String(contribution) || null,
+				problem: String(problem) || null,
+				solution: String(solution) || null
 			}
 		});
 

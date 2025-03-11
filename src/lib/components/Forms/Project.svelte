@@ -10,9 +10,21 @@
 		date?: string | null;
 		description?: string | null;
 		contribution?: string | null;
+		problem?: string | null;
+		solution?: string | null;
 	}
 
-	const { projectID, title, url, company, date, description, contribution }: Props = $props();
+	const {
+		projectID,
+		title,
+		url,
+		company,
+		date,
+		description,
+		contribution,
+		problem,
+		solution
+	}: Props = $props();
 </script>
 
 <form class="grid grid-cols-1 md:grid-cols-2 gap-4" method="post" action="/p/new" use:enhance>
@@ -23,6 +35,8 @@
 	<TextInput id="date" label="Date" type="date" value={date || ''} />
 	<TextArea class="" id="description" label="Description" value={description || ''} />
 	<TextArea class="" id="contribution" label="Contribution" value={contribution || ''} />
+	<TextArea class="" id="problem" label="Problem" value={problem || ''} />
+	<TextArea class="" id="solution" label="Problem Solution" value={solution || ''} />
 	<div class="md:col-span-2 flex justify-end">
 		{#if projectID}
 			<button formaction={`/p/${projectID}?/update`} class="btn btn-primary">Update</button>
