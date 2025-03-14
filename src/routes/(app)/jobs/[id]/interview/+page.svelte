@@ -64,7 +64,7 @@
 		</section>
 		<!-- Projects -->
 		<section class=" space-y-2">
-			<h2 class="font-semibold text-content-1 text-lg mb-2">Projects</h2>
+			<h2 class="font-semibold text-content-1 text-lg mb-2">Projects & Achievements</h2>
 			<div class="max-h-[375px] overflow-y-auto">
 				{#each data?.projects || [] as project}
 					<details class="card p-4 [&_svg]:open:-rotate-180 mb-1">
