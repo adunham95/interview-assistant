@@ -84,7 +84,14 @@ export const actions: Actions = {
 
 		try {
 			await prisma.user.create({
-				data: { id: userId, username, passwordHash, firstName, lastName }
+				data: {
+					id: userId,
+					username,
+					passwordHash,
+					firstName,
+					lastName,
+					profile: { create: { currentTitle: '' } }
+				}
 			});
 
 			const sessionToken = auth.generateSessionToken();

@@ -20,18 +20,20 @@ model todo {
 }
 
 model User {
-  id           String    @id
-  age          Int?
-  username     String    @unique
-  firstName    String?
-  lastName     String?
-  passwordHash String
-  sessions     Session[]
-  jobs         Job[]
-  notes        Note[]
-  projects     Project[]
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @default(now()) @updatedAt
+  id            String       @id
+  age           Int?
+  username      String       @unique
+  firstName     String?
+  lastName      String?
+  passwordHash  String
+  sessions      Session[]
+  jobs          Job[]
+  notes         Note[]
+  projects      Project[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @default(now()) @updatedAt
+  userProfileId Int?         @unique
+  profile       UserProfile? @relation(fields: [userProfileId], references: [id])
 }
 
 model Session {
@@ -80,8 +82,8 @@ model Project {
   user         User     @relation(fields: [userId], references: [id])
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now()) @updatedAt
-  problem String?
-  solution String?
+  problem      String?
+  solution     String?
 }
 
 model NewsletterContacts {
@@ -89,4 +91,15 @@ model NewsletterContacts {
   email     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+}
+
+model UserProfile {
+  id           Int     @id @default(autoincrement())
+  User         User?
+  currentTitle String?
+  website      String?
+  linkedIn     String?
+  phoneNumber  String?
+  location     String?
+  email        String?
 }
