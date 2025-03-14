@@ -87,22 +87,30 @@
 							<div>{project.title}</div>
 						</summary>
 						<div class="[&_code]:text-wrap space-y-4 divide-y-2 divide-surface-4 pt-2">
-							<div>
-								<h3 class="pb-1 font-medium">Description</h3>
-								<SvelteMarkdown source={project?.description || ''} />
-							</div>
-							<div>
-								<h3 class="pt-2 pb-1 font-medium">Contribution</h3>
-								<SvelteMarkdown source={project?.contribution || ''} />
-							</div>
-							<div>
-								<h3 class="pt-2 pb-1 font-medium">Problem</h3>
-								<SvelteMarkdown source={project?.problem || ''} />
-							</div>
-							<div>
-								<h3 class="pt-2 pb-1 font-medium">Solution</h3>
-								<SvelteMarkdown source={project?.solution || ''} />
-							</div>
+							{#if project?.description}
+								<div>
+									<h3 class="pb-1 font-medium">Description</h3>
+									<SvelteMarkdown source={project?.description || ''} />
+								</div>
+							{/if}
+							{#if project?.contribution}
+								<div>
+									<h3 class="pt-2 pb-1 font-medium">Contribution</h3>
+									<SvelteMarkdown source={project?.contribution || ''} />
+								</div>
+							{/if}
+							{#if project?.problem}
+								<div>
+									<h3 class="pt-2 pb-1 font-medium">Problem</h3>
+									<SvelteMarkdown source={project?.problem || ''} />
+								</div>
+							{/if}
+							{#if project?.solution}
+								<div>
+									<h3 class="pt-2 pb-1 font-medium">Solution</h3>
+									<SvelteMarkdown source={project?.solution || ''} />
+								</div>
+							{/if}
 						</div>
 					</details>
 				{/each}

@@ -90,21 +90,29 @@
 	</PageHeader>
 	<div class="h-2"></div>
 	<div class="[&_code]:text-wrap space-y-4 divide-y-2 divide-surface-4">
-		<div>
-			<h3 class="pb-1 font-medium">Description</h3>
-			<SvelteMarkdown source={data.project?.description || ''} />
-		</div>
-		<div>
-			<h3 class="pt-2 pb-1 font-medium">Contribution</h3>
-			<SvelteMarkdown source={data.project?.contribution || ''} />
-		</div>
-		<div>
-			<h3 class="pt-2 pb-1 font-medium">Problem</h3>
-			<SvelteMarkdown source={data.project?.problem || ''} />
-		</div>
-		<div>
-			<h3 class="pt-2 pb-1 font-medium">Solution</h3>
-			<SvelteMarkdown source={data.project?.solution || ''} />
-		</div>
+		{#if data.project?.description}
+			<div>
+				<h3 class="pb-1 font-medium">Description</h3>
+				<SvelteMarkdown source={data.project?.description || ''} />
+			</div>
+		{/if}
+		{#if data.project?.contribution}
+			<div>
+				<h3 class="pt-2 pb-1 font-medium">Contribution</h3>
+				<SvelteMarkdown source={data.project?.contribution || ''} />
+			</div>
+		{/if}
+		{#if data.project?.problem}
+			<div>
+				<h3 class="pt-2 pb-1 font-medium">Problem</h3>
+				<SvelteMarkdown source={data.project?.problem || ''} />
+			</div>
+		{/if}
+		{#if data.project?.solution}
+			<div>
+				<h3 class="pt-2 pb-1 font-medium">Solution</h3>
+				<SvelteMarkdown source={data.project?.solution || ''} />
+			</div>
+		{/if}
 	</div>
 </Container>
