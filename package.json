@@ -13,7 +13,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"postinstall": "prisma generate",
-		"vercel-build": "prisma generate && prisma db push  && vite build",
+		"vercel-build": "prisma generate && prisma db push --accept-data-loss  && vite build",
 		"prisma:seed": "prisma db seed"
 	},
 	"prisma": {
