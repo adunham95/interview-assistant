@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Accordian from '$lib/components/Accordian.svelte';
+	import Profile from '$lib/components/Forms/Profile.svelte';
 	import EditElements from './EditElements.svelte';
 	import Resume from './Resume.svelte';
 
@@ -67,18 +68,18 @@
 <div class="grid grid-cols-4 px-9 py-3 gap-6">
 	<div class="">
 		<div class="sticky top-0 space-y-2">
-			<!-- <button
+			<button
 				onclick={() => (tab = 'resume')}
 				class="btn btn-primary btn-text text-lg w-full text-center sticky top-0"
 			>
 				Preview Resume
-			</button> -->
+			</button>
 			<div class="card">
 				<div class="card-body p-3">
 					<h2 class="font-bold">Elements</h2>
 					<p class="text-sm py-2">Manage all the elements of your application</p>
 					<button
-						onclick={() => alert('Testing')}
+						onclick={() => (tab = 'profile')}
 						class="btn btn-primary btn-text text-sm w-full flex items-center"
 					>
 						Edit Profile
@@ -154,8 +155,8 @@
 	<div class=" col-span-3">
 		{#if tab === 'resume'}
 			<Resume />
-		{:else if tab === 'elements'}
-			<EditElements />
+		{:else if tab === 'profile'}
+			<Profile />
 		{/if}
 	</div>
 </div>
