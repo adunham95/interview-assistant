@@ -32,7 +32,7 @@
 		};
 	}}
 >
-	<TextInput label="Current Title" id="currentTitle" value={currentTitle || ''} />
+	<TextInput label="Current Title" id="currentTitle" value={currentTitle} />
 	<TextInput label="Website" id="website" />
 	<TextInput label="Linkedin" id="linkedin" />
 	<TextInput label="Location" id="location" />

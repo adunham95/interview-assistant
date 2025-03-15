@@ -2469,7 +2469,7 @@ __metadata:
     prisma: "npm:^6.3.1"
     svelte: "npm:^5.0.0"
     svelte-check: "npm:^4.0.0"
-    svelte-input-components: "npm:^1.0.0"
+    svelte-input-components: "npm:^1.0.1"
     svelte-markdown: "npm:^0.4.1"
     svelte-time: "npm:^2.0.1"
     tailwindcss: "npm:3"
@@ -3807,9 +3807,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-input-components@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "svelte-input-components@npm:1.0.0"
+"svelte-input-components@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "svelte-input-components@npm:1.0.1"
   dependencies:
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/forms": "npm:^0.5.9"
@@ -3818,7 +3818,7 @@ __metadata:
     prismjs: "npm:^1.29.0"
   peerDependencies:
     svelte: ^5.0.0
-  checksum: 10c0/a440dff23c204b05f70b72997f80c27d3f60bf05314eb9c90e6680548cbe5c6aa02b82238c94099f830a606e489d454ee1c410d674cda7dab02314fdfcd1d738
+  checksum: 10c0/ac6f6fa978ea0f2eb0ddc56d317fb50eba65d31123630ad11a08fd9ec930198ed7ab6ee646fdbda940b1a3c7769a49f8a8dfe2d1565c146323c43b1821566be5
   languageName: node
   linkType: hard
 
